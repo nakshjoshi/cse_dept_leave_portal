@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSE Dept. Leave Portal</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        background-color: #0056b3;
+        color: white;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        height: 90px;
+        width: auto;
+        margin-right: 40px;
+    }
+
+    .nav-title {
+        font-size: 45px;
+    }
+
+    main {
+        padding: 20px;
+        flex: 1;
+        overflow: auto; /* Ensures scrollbar only if needed */
+    }
+
+    iframe {
+        width: 100%;
+        height: auto;
+        min-height: 100%; /* Adjust this based on content */
+        border: none;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    footer {
+        height: vh;
+        text-align: center;
+        justify-content: center;
+        padding: 10px 20px;
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    @media (max-width: 768px) {
+        .logo {
+            height: 40px;
+        }
+
+        .nav-title {
+            font-size: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <img src="/assets/RGIPT_Logo.png" alt="RGIPT Logo" class="logo">
+    <nav>
+        <div class="nav-title">CSE Dept. Leave Portal</div>
+    </nav>
+</header>
+<main>
+    <iframe id="leaveForm" src="https://docs.google.com/forms/d/e/1FAIpQLSfsAuckP9AAr3rabkjjFyh10b8Q3lYU3oqbLuQimzzuquHgWA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</main>
+<footer>
+    © 2024 CSE Dept, RGIPT. All rights reserved.
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Adjust iframe height based on the remaining viewport height minus header and footer
+        const iframe = document.getElementById('leaveForm');
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        const setIframeHeight = () => {
+            const totalHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight;
+            iframe.style.height = totalHeight + 'px';
+        };
+        setIframeHeight();
+        window.onresize = setIframeHeight; // Adjust on window resize
+    });
+</script>
+</body>
+</html>
